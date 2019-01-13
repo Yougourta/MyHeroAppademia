@@ -17,7 +17,7 @@ public class Biography {
         this.fullName = fullName;
     }
 
-    public List<String> getAliase() {
+    public List<String> getAliases() {
         return aliases;
     }
 

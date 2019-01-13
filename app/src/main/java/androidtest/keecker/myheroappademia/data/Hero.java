@@ -1,14 +1,15 @@
 package androidtest.keecker.myheroappademia.data;
 
-public class Hero {
+import java.io.Serializable;
+
+public class Hero implements Serializable {
     private String id;
     private String name;
     private Biography biography;
     private String work;
     private String image;
 
-    public Hero() {
-    }
+    public Hero() { }
 
     public String getId() {
         return id;
