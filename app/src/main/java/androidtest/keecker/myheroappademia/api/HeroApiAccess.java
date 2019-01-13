@@ -16,9 +16,9 @@ import com.google.gson.JsonParser;
 import java.util.ArrayList;
 import java.util.List;
 
-import androidtest.keecker.myheroappademia.MainActivity;
 import androidtest.keecker.myheroappademia.data.Biography;
 import androidtest.keecker.myheroappademia.data.Hero;
+import androidtest.keecker.myheroappademia.viewmodel.HeroAdapter;
 
 /** Acces to Hero API using Volley**/
 public class HeroApiAccess {
@@ -27,14 +27,23 @@ public class HeroApiAccess {
     private Context context;
     private String urlRequest = "";
     private List<Hero> heroes = new ArrayList();
+    private boolean move;
+    private HeroAdapter heroAdapter;
 
 
     public HeroApiAccess(final Context context){
         this.context = context;
+        this.move = false;
         requestData("batman");
         requestData("supergirl");
         requestData("spider-man");
         requestData("hulk");
+        requestData("wolverine");
+        requestData("nightwing");
+        requestData("bumblebee");
+        requestData("loki");
+        requestData("venom");
+        requestData("superman");
     }
 
     private void requestData(String hero){
@@ -49,6 +58,9 @@ public class HeroApiAccess {
                     JsonObject jsonObject = resultsJsonObject.get(i).getAsJsonObject();
                     Hero hero = getHero(jsonObject);
                     heroes.add(hero);
+                    //notify the adapter the the list has been changed
+                    if (heroAdapter != null)
+                        heroAdapter.notifyDataSetChanged();
                 }
             }
         }, new Response.ErrorListener() {
@@ -62,10 +74,10 @@ public class HeroApiAccess {
 
     private Hero getHero(JsonObject jsonObject){
         Hero hero = new Hero();
-        hero.setId(jsonObject.get("id").toString());
-        hero.setName(jsonObject.get("name").toString());
-        hero.setWork(jsonObject.get("work").getAsJsonObject().get("base").toString());
-        hero.setImage(jsonObject.get("image").toString());
+        hero.setId(jsonObject.get("id").getAsString());
+        hero.setName(jsonObject.get("name").getAsString());
+        hero.setWork(jsonObject.get("work").getAsJsonObject().get("base").getAsString());
+        hero.setImage(jsonObject.get("image").getAsJsonObject().get("url").getAsString());
 
         JsonObject biographyJsonObject = jsonObject.get("biography").getAsJsonObject();
         Biography biography = getBiography(biographyJsonObject);
@@ -76,8 +88,8 @@ public class HeroApiAccess {
     private Biography getBiography(JsonObject jsonObject){
         Biography biography = new Biography();
         List<String> aliases = new ArrayList();
-        biography.setFullName(jsonObject.get("full-name").toString());
-        biography.setPublisher(jsonObject.get("publisher").toString());
+        biography.setFullName(jsonObject.get("full-name").getAsString());
+        biography.setPublisher(jsonObject.get("publisher").getAsString());
         JsonArray aliasesJsonOjbect = jsonObject.get("aliases").getAsJsonArray();
         for (int i=0; i<aliasesJsonOjbect.size(); i++){
             aliases.add(aliasesJsonOjbect.get(i).toString());
@@ -86,7 +98,9 @@ public class HeroApiAccess {
         return biography;
     }
 
-    public List<Hero> getHeroes(){
-        return  heroes;
-    }
+    public List<Hero> getHeroes(){ return  heroes; }
+
+    public boolean getMove(){ return move;}
+
+    public void setHeroAdapter(HeroAdapter heroAdapter){ this.heroAdapter = heroAdapter; }
 }

@@ -34,12 +34,28 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroRowView> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HeroRowView holder, int position) {
+    public void onBindViewHolder(@NonNull HeroRowView holder, final int position) {
         holder.setView(heroes.get(position), context);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                setClickedPosition(position);
+            }
+        });
     }
 
     @Override
     public int getItemCount() {
         return heroes.size();
+    }
+
+    //Handle clicks on list items
+    public int getClickedPosition() {
+        return clickedPosition;
+    }
+    private void setClickedPosition(int pos) {
+        notifyItemChanged(clickedPosition);
+        clickedPosition = pos;
+        notifyItemChanged(clickedPosition);
     }
 }

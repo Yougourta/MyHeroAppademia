@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.squareup.picasso.Picasso;
 
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
@@ -29,8 +29,10 @@ public class HeroRowView extends RecyclerView.ViewHolder {
     }
 
     public void setView(Hero hero, Context context){
-        Glide.with(context)
+        Picasso.get()
                 .load(hero.getImage())
+                .resize(150, 150)
+                .centerCrop()
                 .into(image);
         id.setText(hero.getId());
         name.setText(hero.getName());
