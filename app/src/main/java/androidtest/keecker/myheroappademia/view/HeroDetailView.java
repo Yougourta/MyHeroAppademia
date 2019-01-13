@@ -17,7 +17,7 @@ public class HeroDetailView extends AppCompatActivity {
 
         Intent intent = getIntent();
         Hero hero = (Hero) intent.getSerializableExtra("her");
-        HeroDetailViewModel viewModel = new HeroDetailViewModel(this, hero);
+        HeroDetailViewModel viewModel = new HeroDetailViewModel(this);
         viewModel.setView(hero);
     }
 }
