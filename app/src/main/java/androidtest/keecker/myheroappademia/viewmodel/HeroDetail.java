@@ -1,7 +1,5 @@
 package androidtest.keecker.myheroappademia.viewmodel;
 
-import android.content.Context;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -9,20 +7,20 @@ import com.squareup.picasso.Picasso;
 
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
-import androidtest.keecker.myheroappademia.view.HeroDetailView;
+import androidtest.keecker.myheroappademia.view.HeroDetailActivity;
 
-public class HeroDetailViewModel {
+public class HeroDetail {
 
     private TextView name;
     private TextView work;
     private TextView biography;
     private ImageView image;
 
-    public HeroDetailViewModel(HeroDetailView view){
+    public HeroDetail(HeroDetailActivity view){
         findViews(view);
     }
 
-    private void findViews(HeroDetailView view){
+    private void findViews(HeroDetailActivity view){
         name = view.findViewById(R.id.nameDetail);
         work = view.findViewById(R.id.workDetail);
         biography = view.findViewById(R.id.biographyDetail);
@@ -37,7 +35,7 @@ public class HeroDetailViewModel {
                 .into(image);
         name.setText("Name: "+hero.getName());
         work.setText("Work: "+hero.getWork());
-        biography.setText("Biography: \n"+"Full-name: "+hero.getBiography().getFullName()
+        biography.setText("Biography: \n\n"+"Full-name: "+hero.getBiography().getFullName()
                 +"\n"+
                 "Publisher: "+hero.getBiography().getPublisher()
                 +"\n"+

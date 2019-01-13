@@ -1,6 +1,8 @@
 package androidtest.keecker.myheroappademia.data;
 
-public class Work {
+import java.io.Serializable;
+
+public class Work implements Serializable {
     private String occupation;
     private String base;
 

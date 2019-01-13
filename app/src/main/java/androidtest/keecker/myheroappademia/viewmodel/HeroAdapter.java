@@ -12,7 +12,7 @@ import java.util.List;
 
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
-import androidtest.keecker.myheroappademia.view.HeroDetailView;
+import androidtest.keecker.myheroappademia.view.HeroDetailActivity;
 
 public class HeroAdapter extends RecyclerView.Adapter<HeroRow> {
 
@@ -43,9 +43,11 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroRow> {
                 setClickedPosition(position);
             }
         });
-        Intent intent = new Intent(context, HeroDetailView.class);
-        intent.putExtra("hero", heroes.get(getClickedPosition()));
-        context.startActivity(intent);
+        if (getClickedPosition() > -1){
+            Intent intent = new Intent(context, HeroDetailActivity.class);
+            intent.putExtra("hero", heroes.get(getClickedPosition()));
+            context.startActivity(intent);
+        }
     }
 
     @Override

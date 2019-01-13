@@ -1,8 +1,9 @@
 package androidtest.keecker.myheroappademia.data;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class Biography {
+public class Biography implements Serializable {
     private String fullName;
     private List<String> aliases;
     private String publisher;

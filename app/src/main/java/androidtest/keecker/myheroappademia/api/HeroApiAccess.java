@@ -92,7 +92,8 @@ public class HeroApiAccess {
         biography.setPublisher(jsonObject.get("publisher").getAsString());
         JsonArray aliasesJsonOjbect = jsonObject.get("aliases").getAsJsonArray();
         for (int i=0; i<aliasesJsonOjbect.size(); i++){
-            aliases.add(aliasesJsonOjbect.get(i).toString());
+            String alias = aliasesJsonOjbect.get(i).getAsString();
+            aliases.add(alias);
         }
         biography.setAliase(aliases);
         return biography;

@@ -6,9 +6,9 @@ import android.os.Bundle;
 
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
-import androidtest.keecker.myheroappademia.viewmodel.HeroDetailViewModel;
+import androidtest.keecker.myheroappademia.viewmodel.HeroDetail;
 
-public class HeroDetailView extends AppCompatActivity {
+public class HeroDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -16,8 +16,8 @@ public class HeroDetailView extends AppCompatActivity {
         setContentView(R.layout.activity_hero_detail);
 
         Intent intent = getIntent();
-        Hero hero = (Hero) intent.getSerializableExtra("her");
-        HeroDetailViewModel viewModel = new HeroDetailViewModel(this);
+        Hero hero = (Hero) intent.getSerializableExtra("hero");
+        HeroDetail viewModel = new HeroDetail(this);
         viewModel.setView(hero);
     }
 }
