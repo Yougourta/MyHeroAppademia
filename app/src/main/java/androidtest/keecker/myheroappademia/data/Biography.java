@@ -8,8 +8,6 @@ public class Biography implements Serializable {
     private List<String> aliases;
     private String publisher;
 
-    public Biography() {}
-
     public String getFullName() {
         return fullName;
     }

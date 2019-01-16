@@ -9,8 +9,6 @@ public class Hero implements Serializable {
     private String work;
     private String image;
 
-    public Hero() { }
-
     public String getId() {
         return id;
     }

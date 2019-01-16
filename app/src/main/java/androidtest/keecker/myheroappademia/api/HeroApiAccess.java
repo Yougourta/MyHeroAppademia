@@ -25,7 +25,7 @@ public class HeroApiAccess {
 
     private final String API_KEY = "2321140144771513";
     private Context context;
-    private String urlRequest = "";
+    private String urlRequest;
     private List<Hero> heroes = new ArrayList();
     private boolean move;
     private HeroAdapter heroAdapter;

@@ -1,18 +1,14 @@
 package androidtest.keecker.myheroappademia.view;
 
 import android.os.Bundle;
-import android.os.SystemClock;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.api.HeroApiAccess;
 import androidtest.keecker.myheroappademia.viewmodel.HeroAdapter;
-
-import static java.lang.Thread.sleep;
 
 public class MainActivity extends AppCompatActivity {
 
