@@ -25,7 +25,6 @@ public class HeroApiAccess {
 
     private final String API_KEY = "2321140144771513";
     private Context context;
-    private String urlRequest;
     private List<Hero> heroes = new ArrayList();
     private boolean move;
     private HeroAdapter heroAdapter;
@@ -48,7 +47,7 @@ public class HeroApiAccess {
 
     private void requestData(String hero){
         RequestQueue queue = Volley.newRequestQueue(context);
-        urlRequest = "https://superheroapi.com/api.php/"+API_KEY+"/search/"+hero;
+        String urlRequest = "https://superheroapi.com/api.php/"+API_KEY+"/search/"+hero;
         StringRequest request = new StringRequest(Request.Method.GET, urlRequest, new Response.Listener<String>() {
             @Override
             public void onResponse(String s) {
