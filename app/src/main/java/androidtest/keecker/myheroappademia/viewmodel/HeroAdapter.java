@@ -13,8 +13,9 @@ import java.util.List;
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
 import androidtest.keecker.myheroappademia.view.HeroDetailActivity;
+import androidtest.keecker.myheroappademia.view.HeroViewHolder;
 
-public class HeroAdapter extends RecyclerView.Adapter<HeroRow> {
+public class HeroAdapter extends RecyclerView.Adapter<HeroViewHolder> {
 
     private Context context;
     private List<Hero> heroes;
@@ -27,15 +28,15 @@ public class HeroAdapter extends RecyclerView.Adapter<HeroRow> {
 
     @NonNull
     @Override
-    public HeroRow onCreateViewHolder(@NonNull ViewGroup parent, int i) {
+    public HeroViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int i) {
         View item = LayoutInflater
                 .from(parent.getContext())
                 .inflate(R.layout.activity_main_rows, parent, false);
-        return new HeroRow(item);
+        return new HeroViewHolder(item);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HeroRow holder, final int position) {
+    public void onBindViewHolder(@NonNull HeroViewHolder holder, final int position) {
         holder.setView(heroes.get(position), context);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

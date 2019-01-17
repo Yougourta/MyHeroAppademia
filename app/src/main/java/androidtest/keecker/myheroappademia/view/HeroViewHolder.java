@@ -1,4 +1,4 @@
-package androidtest.keecker.myheroappademia.viewmodel;
+package androidtest.keecker.myheroappademia.view;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -11,13 +11,13 @@ import com.squareup.picasso.Picasso;
 import androidtest.keecker.myheroappademia.R;
 import androidtest.keecker.myheroappademia.data.Hero;
 
-public class HeroRow extends RecyclerView.ViewHolder {
+public class HeroViewHolder extends RecyclerView.ViewHolder {
 
     private ImageView image;
     private TextView id;
     private TextView name;
 
-    public HeroRow(View itemView) {
+    public HeroViewHolder(View itemView) {
         super(itemView);
         findViews(itemView);
     }
